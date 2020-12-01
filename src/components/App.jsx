@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import Heading from "./Heading";
+import Form from "./Form";
 function App() {
   const [heading, setHeading] = useState("");
   const [styles, setStyles] = useState(false);
   const [input, setInput] = useState("");
+  const [secondInput, setSecondInput] = useState("");
   function handleChange(event) {
     setInput(event.target.value);
   }
+  function newHandleChange(event) {
+    setSecondInput(event.target.value);
+  }
   function handleClick(event) {
-    setHeading(input);
+    setHeading(input+" "+secondInput);
     setInput("");
+    setSecondInput("");
     event.preventDefault();
   }
   function hoverButton() {
@@ -20,24 +26,17 @@ function App() {
   }
   return (
     <div className="container">
-      <Heading
-      heading = {heading}
+      <Heading heading={heading} />
+      <Form
+        click={handleClick}
+        hover={hoverButton}
+        change={handleChange}
+        next = {secondInput}
+        newChange ={newHandleChange}
+        input={input}
+        unhover={unHoverButton}
+        styles={{ backgroundColor: styles && "black" }}
       />
-      <form onSubmit={handleClick}>
-        <input
-          onChange={handleChange}
-          type="text"
-          placeholder="What's your name?"
-          value={input}
-        />
-        <button
-          onMouseOver={hoverButton}
-          onMouseOut={unHoverButton}
-          style={{ backgroundColor: styles && "black" }}
-        >
-          Submit
-        </button>
-      </form>
     </div>
   );
 }
