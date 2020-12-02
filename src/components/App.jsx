@@ -13,7 +13,7 @@ function App() {
     setSecondInput(event.target.value);
   }
   function handleClick(event) {
-    setHeading(input+" "+secondInput);
+    setHeading(input + " " + secondInput);
     setInput("");
     setSecondInput("");
     event.preventDefault();
@@ -31,8 +31,8 @@ function App() {
         click={handleClick}
         hover={hoverButton}
         change={handleChange}
-        next = {secondInput}
-        newChange ={newHandleChange}
+        next={secondInput}
+        newChange={newHandleChange}
         input={input}
         unhover={unHoverButton}
         styles={{ backgroundColor: styles && "black" }}
