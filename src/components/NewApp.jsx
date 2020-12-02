@@ -10,25 +10,10 @@ function NewApp() {
   function handleChange(event) {
     const { value, name } = event.target;
     setContact((logged) => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: logged.lName,
-          email: logged.email
-        };
-      } else if (name === "lName") {
-        return {
-          fName: logged.fName,
-          lName: value,
-          email: logged.email
-        };
-      } else if (name === "email") {
-        return {
-          fName: logged.fName,
-          lName: logged.lName,
-          email: value
-        };
-      }
+      return{
+        ...logged, //spread operator copies the entire object
+        [name]:value //here the name is being given the current value
+      } //remember if the name isnt b/w [ ] then it will interpret it as a new key value pair!
     });
   }
 
